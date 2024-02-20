@@ -5,23 +5,28 @@ export default {
   mounted() {
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/11?api_key=b8a3cc58e76a00cf47574cfa4f055fb3'
+        "https://api.themoviedb.org/3/movie/popular?api_key=b8a3cc58e76a00cf47574cfa4f055fb3"
       )
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
+        this.cards = response.data;
       })
-      .catch(error =>{
+      .catch((error) => {
         console.group(error);
-      })
+      });
+
+      
+
+
   },
   data() {
-    return {};
+    return {
+      cards: [],
+    };
   },
   components: {},
   methods: {},
 };
 </script>
-<template>
-  <h1 @click="error">hello</h1>
-</template>
+<template></template>
 <style></style>
