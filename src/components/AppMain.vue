@@ -41,7 +41,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  margin: 0 -1rem;
+  margin: 0 2rem;
+  flex-grow: 1;
 }
 .card{
     width: 200px;
