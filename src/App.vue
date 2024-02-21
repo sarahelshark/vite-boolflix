@@ -1,4 +1,8 @@
 <script>
+import AppHeader from "./components/AppHeader.vue";
+import AppMain from "./components/AppMain.vue";
+import AppFooter from "./components/AppFooter.vue";
+
 import axios from "axios";
 export default {
   name: "App",
@@ -26,15 +30,26 @@ export default {
       });
   },
   
-  components: {},
+  components: {
+    AppHeader,
+    AppMain,
+    AppFooter,
+  },
   methods: {},
 };
 </script>
 <template>
- 
- <div class="card" v-for="card in cards">
+  <!-- ignoro 
+   <div class="card" v-for="card in cards">
   {{ card.title }}
 </div>
+  -->
 
+
+
+<AppHeader></AppHeader>
+  <AppMain></AppMain>
+  <AppFooter></AppFooter>
+  
 </template>
 <style></style>
