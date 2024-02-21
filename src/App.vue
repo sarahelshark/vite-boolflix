@@ -2,36 +2,39 @@
 import axios from "axios";
 export default {
   name: "App",
-  mounted() {
-    const apiKey = 'b8a3cc58e76a00cf47574cfa4f055fb3';
-    const apiUrl='https://api.themoviedb.org/3/trending/all/day'
-    axios
-      .get(apiUrl, {
-        params: {
-          language:'it-IT',
-          api_key: apiKey,
-
-        },
-      })
-      .then((response) => {
-        console.log(response.data);
-        this.cards = response.data;
-      })
-      .catch((error) => {
-        console.group(error);
-      });
-
-
-
-  },
   data() {
     return {
       cards: [],
     };
   },
+  mounted() {
+    const apiKey = "b8a3cc58e76a00cf47574cfa4f055fb3";
+    const apiUrl = "https://api.themoviedb.org/3/trending/all/day";
+    axios
+      .get(apiUrl, {
+        params: {
+          language: "it-IT",
+          api_key: apiKey,
+        },
+      })
+      .then((response) => {
+        console.log(response.data.results);
+        this.cards = response.data.results; //carico array cards con i dati della api
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  },
+  
   components: {},
   methods: {},
 };
 </script>
-<template></template>
+<template>
+ 
+ <div class="card" v-for="card in cards">
+  {{ card.title }}
+</div>
+
+</template>
 <style></style>
