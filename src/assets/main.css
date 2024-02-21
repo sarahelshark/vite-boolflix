@@ -11,9 +11,8 @@ body{
 }
 
 :root{
-  --bool-accent: var(
-    #db1a27ff
-    );
+  
     --bool-dark: #1a1a1aff;
     --bool-light:#ffffffff;
+    --bool-accent: #db1a27ff;
 }

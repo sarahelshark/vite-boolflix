@@ -1,6 +1,8 @@
 
 <script>
 import AppLogo from "./AppLogo.vue";
+import AppSearchBox from "./AppSearchBox.vue";
+
     export default {
         data() {
     return {
@@ -28,6 +30,7 @@ import AppLogo from "./AppLogo.vue";
   }, 
   components: {
     AppLogo,
+    AppSearchBox,
   },
   methods: {
     toggleChangeClass(item, index) {
@@ -49,18 +52,16 @@ import AppLogo from "./AppLogo.vue";
         
       <div class="center">
         <ul>
-          <li
-            v-for="(item, index) in menu"
+          <li>
+            <a v-for="(item, index) in menu"
             :class="item.active ? 'active' : ''"
-            @click="toggleChangeClass(item, index)"
-          >
-            <a href="#">{{ item.text }}</a>
+            @click="toggleChangeClass(item, index)" href="#">{{ item.text }}</a>
           </li>
            </ul>
       </div>
        
       <div class="right-side">
-        <!--searchbox--> meeeeeee
+        <AppSearchBox></AppSearchBox>
       </div>
     </div>
     
@@ -79,20 +80,19 @@ import AppLogo from "./AppLogo.vue";
     
 }
 .center{
-    & ul {
+    & li {
         margin-top:2rem;
         display: flex;
         justify-content: center;
-       gap: 1rem;
-        
-
+        gap: 1rem;
+    
     }
 }
-
+a{
+    color: var(--bool-light);
+}
 .active{
     color: var(--bool-accent); 
 }
-ul:hover{
 
-}
 </style>
