@@ -6,6 +6,8 @@ import AppSearchBox from "./AppSearchBox.vue";
     export default {
         data() {
     return {
+      searchText:"",
+
       menu: [
         {
           text: "Home",
@@ -37,6 +39,7 @@ import AppSearchBox from "./AppSearchBox.vue";
       this.menu.forEach((item) => (item.active = false));
       this.menu[index].active = true;
     },
+    
   },
     }
 </script>
