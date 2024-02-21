@@ -1,23 +1,25 @@
 <script>
 export default {
-    emits:['filtered'],
-    data(){
-        return{
-            searchText: "",
-        }
+  emits: ["filtered"],
+  data() {
+    return {
+      searchText: "",
+      searchList: [],
+    };
+  },
+  methods: {
+    handleFilter(searchList) {
+     this.searchList.push(this.searchText);
+      this.$emit("filtered", this.searchText);
+      console.log("filtered", this.searchText);
+      this.searchText = ""; // Clear the input field after pushing to the array
+     
     },
-    methods: {
-    handleFilter() {
-      this.$emit('filtered', this.searchText);
-      console.log('it works', this.searchText);
-    },
-    }
-
+  },
 };
 </script>
 <template>
-
- <div class="filters">
+  <div class="filters">
     <input
       type="text"
       placeholder="Inserisci film o serie TV"
@@ -25,33 +27,26 @@ export default {
       @keyup.enter="handleFilter"
     />
 
-    <button @click="handleFilter">
-      cerca
-    </button>
-
- </div>
+    <button @click="handleFilter">cerca</button>
+  </div>
 </template>
 
 <style scoped>
-.filters{ 
-    margin-top: 1rem;
+.filters {
+  margin-top: 1rem;
 
-    & > button{
-        color: var(--bool-light);
-        background-color: var(--bool-accent);
-    }
-    
-    & input,
-    & > select,
-    & > button 
-    {
-        padding: .75rem;
-        margin: .1rem;
-        border-radius: .25rem;
-        border-style: none;
+  & > button {
+    color: var(--bool-light);
+    background-color: var(--bool-accent);
+  }
 
-    }
-
-}</style>
-
-
+  & input,
+  & > select,
+  & > button {
+    padding: 0.75rem;
+    margin: 0.1rem;
+    border-radius: 0.25rem;
+    border-style: none;
+  }
+}
+</style>
