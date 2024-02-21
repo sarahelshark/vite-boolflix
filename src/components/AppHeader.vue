@@ -1,12 +1,11 @@
-
 <script>
 import AppLogo from "./AppLogo.vue";
 import AppSearchBox from "./AppSearchBox.vue";
 
-    export default {
-        data() {
+export default {
+  data() {
     return {
-      searchText:"",
+      searchText: "",
 
       menu: [
         {
@@ -20,16 +19,14 @@ import AppSearchBox from "./AppSearchBox.vue";
         {
           text: "Film",
           active: false,
-
         },
         {
           text: "Nuovi e popolari",
           active: false,
-
         },
       ],
     };
-  }, 
+  },
   components: {
     AppLogo,
     AppSearchBox,
@@ -39,63 +36,59 @@ import AppSearchBox from "./AppSearchBox.vue";
       this.menu.forEach((item) => (item.active = false));
       this.menu[index].active = true;
     },
-    
   },
-    }
+};
 </script>
 <template>
-   
- <header>
-    
+  <header>
     <div class="container">
-
-        <div class="left-side">
-          <AppLogo></AppLogo>
+      <div class="left-side">
+        <AppLogo></AppLogo>
       </div>
-        
+
       <div class="center">
         <ul>
           <li>
-            <a v-for="(item, index) in menu"
-            :class="item.active ? 'active' : ''"
-            @click="toggleChangeClass(item, index)" href="#">{{ item.text }}</a>
+            <a
+              v-for="(item, index) in menu"
+              :class="item.active ? 'active' : ''"
+              @click="toggleChangeClass(item, index)"
+              href="#"
+              >{{ item.text }}</a
+            >
           </li>
-           </ul>
+        </ul>
       </div>
-       
+
       <div class="right-side">
         <AppSearchBox></AppSearchBox>
       </div>
     </div>
-    
-
- </header>
-    
+  </header>
 </template>
 
 <style scoped>
-
-.container{
-
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.center {
+  & ul{
+    padding: 1rem;
+  }
+  & li {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem auto 0;
+  }
 }
-.center{
-    & li {
-        margin-top:2rem;
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-    
-    }
+a {
+  color: var(--bool-light);
 }
-a{
-    color: var(--bool-light);
+.active {
+  color: var(--bool-accent);
+  filter: drop-shadow(0 0 5px var(--bool-accent));
 }
-.active{
-    color: var(--bool-accent); 
-}
-
 </style>
