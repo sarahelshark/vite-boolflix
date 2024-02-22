@@ -50,7 +50,7 @@ export default {
 <AppHeader></AppHeader>
   <AppMain></AppMain>
   <div class="card" v-for="card in movieCards">
-   <img src=""+ {{card.poster_path}} alt={{ card.title }}>
+   <img :src="state.img_prefix+card.poster_path"alt="">
    <h3>{{ card.title }}</h3>
   </div>
   <AppFooter></AppFooter>
