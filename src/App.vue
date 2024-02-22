@@ -53,9 +53,11 @@ export default {
          <div class="row">
            <div class="card col-4" v-for="card in movieCards">
             <div class="frontofcard">
-               <img :src="state.img_prefix+card.poster_path" alt="">
               <h3>{{ card.title }}</h3>
+               <img :src="state.img_prefix+card.poster_path" alt="">
             </div>
+
+            
 
             <div class="backofcard">
               <h3>{{ card.title }}</h3>
