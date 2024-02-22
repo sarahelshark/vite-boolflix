@@ -52,8 +52,22 @@ export default {
   <div class="container">
          <div class="row">
            <div class="card col-4" v-for="card in movieCards">
-             <img :src="state.img_prefix+card.poster_path" alt="">
-            <h3>{{ card.title }}</h3>
+            <div class="frontofcard">
+               <img :src="state.img_prefix+card.poster_path" alt="">
+              <h3>{{ card.title }}</h3>
+            </div>
+
+            <div class="backofcard">
+              <h3>{{ card.title }}</h3>
+              <ul>
+                 <li>{{ card.original_title }}</li>
+                 <li>{{ card.original_language }}</li>
+                 <li>{{ card.vote_average }}</li>
+              </ul>
+
+
+            </div>
+             
         </div>
 
         </div>
@@ -83,14 +97,41 @@ export default {
   width: 80%;
  
 }
-.card{
-    color: rgb(220, 194, 23);
-    margin: auto;
-    padding: .5rem;
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
+
+/*cards rotating */
+.frontofcard{
+  font-size: 14px;
+  
 }
+.card{
+    height: 400px;
+    width: 300px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.8s ease-in;
+}
+.frontofcard, .backofcard{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  color: var(--bool-light);
+}
+.card:hover{
+  transform: rotateY(180deg);
+}
+.frontofcard{
+  backface-visibility: hidden;
+}
+.backofcard{
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
+.card {  }
+
 [class^="col-"]{
   padding: 1rem;
 }
