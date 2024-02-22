@@ -98,7 +98,8 @@ export default {
  
 }
 
-/*cards rotating */
+/*#region of cards rotating */
+
 .frontofcard{
   font-size: 14px;
   
@@ -114,11 +115,15 @@ export default {
   width: 100%;
   height: 100%;
   display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: absolute;
   color: var(--bool-light);
+  padding: auto;
+ 
 }
 .card:hover{
   transform: rotateY(180deg);
@@ -130,8 +135,7 @@ export default {
   backface-visibility: hidden;
   transform: rotateY(180deg);
 }
-.card {  }
-
+/*#endregion of cards rotating */
 [class^="col-"]{
   padding: 1rem;
 }
