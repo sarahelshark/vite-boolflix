@@ -1,28 +1,17 @@
 
-
 <script>
+import {state} from "../state.js"
     export default {
-        
+      data() {
+    return {
+      movieCards: [],
+      state,
+    };
+  },
     }
 </script>
 <template>
-    <div class="Debug container">
-        <div class="row">
-          
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-
-        </div>
-
-   </div>
+    
 </template>
 <style scoped>
 

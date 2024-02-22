@@ -49,16 +49,54 @@ export default {
 
 <AppHeader></AppHeader>
   <AppMain></AppMain>
-  <div class="card" v-for="card in movieCards">
-   <img :src="state.img_prefix+card.poster_path"alt="">
-   <h3>{{ card.title }}</h3>
-  </div>
+  <div class="container">
+         <div class="row">
+           <div class="card col-4" v-for="card in movieCards">
+             <img :src="state.img_prefix+card.poster_path" alt="">
+            <h3>{{ card.title }}</h3>
+        </div>
+
+        </div>
+
+   </div>
   <AppFooter></AppFooter>
   
 </template>
 <style scoped>
+.container
+{
+ display: flex;
+  width: 80%;
+  max-width: 1176px;
+  margin: auto;
+  gap: .5rem;
+  margin-top: 2.5rem;
+}
 
+.row
+{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0 2rem;
+  flex-grow: 1;
+  width: 80%;
+ 
+}
 .card{
-  color: aliceblue;
+    color: rgb(220, 194, 23);
+    margin: auto;
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+[class^="col-"]{
+  padding: 1rem;
+}
+
+.col-4
+{
+  width: calc(100% / 4);
 }
 </style>
