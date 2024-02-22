@@ -8,6 +8,7 @@
 <template>
     <div class="Debug container">
         <div class="row">
+          
             <div class="card"></div>
             <div class="card"></div>
             <div class="card"></div>
