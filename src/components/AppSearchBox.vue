@@ -1,5 +1,7 @@
 <script>
+
 export default {
+
   emits: ["filtered"],
   data() {
     return {
