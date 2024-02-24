@@ -21,3 +21,9 @@ img{
     --bool-light:#ffffffff;
     --bool-accent: #db1a27ff;
 }
+
+.notAvailable {
+  color: var(--bool-light);
+  padding: 1rem;
+  margin: auto;
+}

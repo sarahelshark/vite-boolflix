@@ -10,12 +10,7 @@ export default {
     };
   },
   methods: {
-    handleFilter(searchList) {
-      this.searchList.push(this.searchText);
-      this.$emit("filtered", this.searchText);
-      console.log("filtered", this.searchText);
-      this.searchText = ""; // Clear the input field after pushing to the array
-    },
+   
   },
 };
 </script>
@@ -25,10 +20,9 @@ export default {
       type="text"
       placeholder="Inserisci film o serie TV"
       v-model="searchText"
-      @keyup.enter="handleFilter"
+      @keyup.enter="filterResults"
     />
-
-    <button @click="handleFilter">cerca</button>
+    <button @click="filterResults">cerca</button>
   </div>
 </template>
 

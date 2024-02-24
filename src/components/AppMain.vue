@@ -6,8 +6,7 @@ export default {
   data() {
     return {
       state,
-      searchText: "",
-      showDiv: false,
+      
     };
   },
   methods: {
@@ -15,8 +14,8 @@ export default {
       this.showDiv = false;
       //resetto il messaggio in pagina se si effettua un'altra ricerca dopo il messaggio informativo 
       
-      /*costruisco qui dentro una chiamata ajax dove costruisco il nuovo url  */
-      const url = `https://api.themoviedb.org/3/search/movie?language=it-IT&api_key=b8a3cc58e76a00cf47574cfa4f055fb3&query=${this.searchText}`;
+      /*costruisco qui dentro una chiamata ajax dove costruisco il nuovo url> quella dentro fetchdata  */
+      const url = `${state.api_url}&query=${state.searchText}`;
       
       axios
         .get(url)
@@ -32,7 +31,7 @@ export default {
       //faccio apparire messaggio in pagina> lo trasformo in una funzione migliore dopo...
       if (state.movieCards.length === 0) {
         console.log("titolo non disponibile");
-        this.showDiv = true;
+        state.showDiv = true;
       }
     },
   },
@@ -50,14 +49,14 @@ export default {
     <input
       type="text"
       placeholder="Inserisci film o serie TV"
-      v-model="searchText"
+      v-model="state.searchText"
       @keyup.enter="filterResults"
     />
     <button @click="filterResults">cerca</button>
   </div>
   <div class="container">
     <div class="row">
-      <div class="notAvailable" v-show="showDiv">
+      <div class="notAvailable" v-show="state.showDiv">
         Spiacenti! Nessun film disponibile al momento, prova a cercare un altro
         titolo.
       </div>
