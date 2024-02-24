@@ -14,7 +14,7 @@ export default {
   },
   mounted() {
     //posso fare altra chiamata per serie tv sullo stesso mounted
-    console.log(state.api_url);
+    //console.log(state.api_url);
     const apiKey = "b8a3cc58e76a00cf47574cfa4f055fb3";
     const apiUrl = "https://api.themoviedb.org/3/search/movie";
     axios
@@ -34,21 +34,22 @@ export default {
       });
   },
   methods: {
-    handleFilter(searchList) {
-      this.searchList.push(this.searchText);
-      this.$emit("filtered", this.searchText);
-      console.log("filtered", this.searchText);
-      this.searchText = ""; // Clear the input field after pushing to the array
-    },
-    searchMovie() {
-      console.log("searchMovie funziona");
-      console.log(this.searchText);
-      const text = this.searchText.split(" ");
-      const titleSearched = text.join("+");
-      console.log(titleSearched);
-      const urlMovie = `https://api.themoviedb.org/3/search/movie?language=it-IT&api_key=b8a3cc58e76a00cf47574cfa4f055fb3&query=${titleSearched}`;
-      console.log(urlMovie);
-      this.movieCards = urlMovie;
+    filterResults() {
+      console.log("it works");
+      /*costruisco qui dentro una chiamata ajax dove costruisco il nuovo url  */
+      const url = `https://api.themoviedb.org/3/search/movie?language=it-IT&api_key=b8a3cc58e76a00cf47574cfa4f055fb3&query=${this.searchText}`;
+      console.log(url);
+      axios
+        .get(url)
+        .then((response) => {
+          console.log(response.data.results);
+          this.movieCards = response.data.results; 
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+     this.searchText = ""; // Clear the input
+     
     },
   },
 };
@@ -59,10 +60,9 @@ export default {
       type="text"
       placeholder="Inserisci film o serie TV"
       v-model="searchText"
-      @keyup.enter="searchMovie"
+      @keyup.enter="filterResults"
     />
-
-    <button @click="handleFilter">cerca</button>
+    <button @click="filterResults">cerca</button>
   </div>
   <div class="container">
     <div class="row">
