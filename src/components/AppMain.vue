@@ -5,63 +5,43 @@ import axios from "axios";
 export default {
   data() {
     return {
+      state,
       searchText: "",
       showDiv: false,
-
-      movieCards: [],
-      state,
     };
-  },
-  mounted() {
-    //posso fare altra chiamata per serie tv sullo stesso mounted
-    //console.log(state.api_url);
-    const apiKey = "b8a3cc58e76a00cf47574cfa4f055fb3";
-    const apiUrl = "https://api.themoviedb.org/3/search/movie";
-    axios
-      .get(apiUrl, {
-        params: {
-          language: "it-IT",
-          api_key: apiKey,
-          query: "a",
-        },
-      })
-      .then((response) => {
-        console.log(response.data.results);
-        this.movieCards = response.data.results; //carico array cards con i dati della api
-      })
-      .catch((error) => {
-        console.error(error);
-      });
   },
   methods: {
     filterResults(showDiv) {
-      this.showDiv = false; 
-      //resetto il messaggio in pagina se si effettua un'altra ricerca dopo il messaggio informativo '
-      console.log("it works");
+      this.showDiv = false;
+      //resetto il messaggio in pagina se si effettua un'altra ricerca dopo il messaggio informativo 
+      
       /*costruisco qui dentro una chiamata ajax dove costruisco il nuovo url  */
       const url = `https://api.themoviedb.org/3/search/movie?language=it-IT&api_key=b8a3cc58e76a00cf47574cfa4f055fb3&query=${this.searchText}`;
-      console.log(url);
+      
       axios
         .get(url)
         .then((response) => {
-          console.log(response.data.results);
-          this.movieCards = response.data.results;
+          state.movieCards = response.data.results;
         })
         .catch((error) => {
           console.error(error);
         });
+
       this.searchText = ""; // Clear the input
 
-      //faccio apparire messaggio in pagina> lo trasformo in una funzione dopo... 
-      if (this.movieCards.length === 0) {
+      //faccio apparire messaggio in pagina> lo trasformo in una funzione migliore dopo...
+      if (state.movieCards.length === 0) {
         console.log("titolo non disponibile");
         this.showDiv = true;
-      }else {
-  this.showDiv = false;
-}
-
-      
+      }
     },
+  },
+  mounted() {
+    /*RENDER MOVIES HOME PAGE- 1^ chiamata ajax*/
+    state.fetchMovieData(state.api_url);
+
+    //posso fare altra chiamata per serie tv sullo stesso mounted? 2^CHIAMATA
+    //this.fetchTVSeriesData()
   },
 };
 </script>
@@ -81,7 +61,7 @@ export default {
         Spiacenti! Nessun film disponibile al momento, prova a cercare un altro
         titolo.
       </div>
-      <div class="card col-4" v-for="card in movieCards">
+      <div class="card col-4" v-for="card in state.movieCards">
         <div class="frontofcard">
           <h3>{{ card.title }}</h3>
           <img :src="state.img_prefix + card.poster_path" alt="" />
