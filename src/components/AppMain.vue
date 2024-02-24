@@ -7,6 +7,7 @@ export default {
     return {
       searchText: "",
       searchList: [],
+      showDiv: false,
 
       movieCards: [],
       state,
@@ -34,7 +35,7 @@ export default {
       });
   },
   methods: {
-    filterResults() {
+    filterResults(showDiv) {
       console.log("it works");
       /*costruisco qui dentro una chiamata ajax dove costruisco il nuovo url  */
       const url = `https://api.themoviedb.org/3/search/movie?language=it-IT&api_key=b8a3cc58e76a00cf47574cfa4f055fb3&query=${this.searchText}`;
@@ -43,13 +44,18 @@ export default {
         .get(url)
         .then((response) => {
           console.log(response.data.results);
-          this.movieCards = response.data.results; 
+          this.movieCards = response.data.results;
         })
         .catch((error) => {
           console.error(error);
         });
-     this.searchText = ""; // Clear the input
-     
+      this.searchText = ""; // Clear the input
+
+      //faccio apparire messaggio in pagina
+      if (!this.searchList.length > 0) {
+        console.log("titolo non disponibile");
+        this.showDiv = true;
+      } 
     },
   },
 };
@@ -66,12 +72,15 @@ export default {
   </div>
   <div class="container">
     <div class="row">
+      <div class="notAvailable" v-show="showDiv">
+        Spiacenti! Nessun film disponibile al momento, prova a cercare un altro
+        titolo.
+      </div>
       <div class="card col-4" v-for="card in movieCards">
         <div class="frontofcard">
           <h3>{{ card.title }}</h3>
           <img :src="state.img_prefix + card.poster_path" alt="" />
         </div>
-
         <div class="backofcard">
           <h3>{{ card.title }}</h3>
           <ul>
@@ -101,6 +110,12 @@ export default {
   margin: 0 2rem;
   flex-grow: 1;
   width: 80%;
+}
+
+.notAvailable {
+  color: var(--bool-light);
+  padding: 1rem;
+  margin: auto;
 }
 
 /*#region of cards rotating */
