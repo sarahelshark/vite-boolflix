@@ -36,6 +36,7 @@ export default {
   },
   methods: {
     filterResults(showDiv) {
+      this.showDiv = false; //resetto il messaggio in pagina se si effettua un'altra ricerca dopo il messaggio informativo '
       console.log("it works");
       /*costruisco qui dentro una chiamata ajax dove costruisco il nuovo url  */
       const url = `https://api.themoviedb.org/3/search/movie?language=it-IT&api_key=b8a3cc58e76a00cf47574cfa4f055fb3&query=${this.searchText}`;
@@ -52,7 +53,7 @@ export default {
       this.searchText = ""; // Clear the input
 
       //faccio apparire messaggio in pagina
-      if (!this.searchList.length > 0) {
+      if ((this.movieCards = " ")) {
         console.log("titolo non disponibile");
         this.showDiv = true;
       } 
