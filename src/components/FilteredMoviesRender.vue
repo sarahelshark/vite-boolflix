@@ -1,8 +1,7 @@
-
 <script>
 import { state } from "../state.js";
-    export default {
-        data() {
+export default {
+  data() {
     return {
       state,
     };
@@ -11,33 +10,32 @@ import { state } from "../state.js";
     /*RENDER MOVIES HOME PAGE- 1^ chiamata ajax*/
     state.fetchMovieData(state.api_url);
   },
-        
-    }
+};
 </script>
 
 <template>
-    <div class="card col-4" v-for="card in state.movieCards">
-        <div class="frontofcard">
-          <h3>{{ card.title }}</h3>
-          <img :src="state.img_prefix + card.poster_path" alt="" />
-        </div>
-        <div class="backofcard">
-          <h3>{{ card.title }}</h3>
-          <ul>
-            <li>{{ card.original_title }}</li>
-            <li>{{ card.original_language }}</li>
-            <li>Voto: {{ state.starsRate(card.vote_average) }}</li>
-            <i
-              v-for="i in state.starsRate(card.vote_average)"
-              class="fa-solid fa-star"
-            ></i>
-            <i
-              v-for="i in 5 - state.starsRate(card.vote_average)"
-              class="fa-regular fa-star"
-            ></i>
-          </ul>
-        </div>
-      </div>
+  <div class="card col-4" v-for="card in state.movieCards">
+    <div class="frontofcard">
+      <h3>{{ card.title }}</h3>
+      <img :src="state.img_prefix + card.poster_path" alt="" />
+    </div>
+    <div class="backofcard">
+      <h3>{{ card.title }}</h3>
+      <ul>
+        <li>{{ card.original_title }}</li>
+        <li>{{ card.original_language }}</li>
+        <li>Voto: {{ state.starsRate(card.vote_average) }}</li>
+        <i
+          v-for="i in state.starsRate(card.vote_average)"
+          class="fa-solid fa-star"
+        ></i>
+        <i
+          v-for="i in 5 - state.starsRate(card.vote_average)"
+          class="fa-regular fa-star"
+        ></i>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <style scoped>
@@ -84,6 +82,6 @@ import { state } from "../state.js";
 }
 
 .col-4 {
-  width: calc(100% /4);
+  width: calc(100% / 4);
 }
 </style>

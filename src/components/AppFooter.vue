@@ -3,7 +3,7 @@ export default {};
 </script>
 <template>
   <footer>
-    <p>&copy; 2024 Boolean Boolflix > made with love</p>
+    <p>&copy; 2024 Boolean Boolflix > made with love - Sarah El Sharkawy</p>
   </footer>
 </template>
 <style scoped>
