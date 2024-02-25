@@ -32,6 +32,10 @@ export default {
     AppSearchBox,
   },
   methods: {
+    toggleChangeClass(item, index) {
+      this.menu.forEach((item) => (item.active = false));
+      this.menu[index].active = true;
+    },
 
   },
  
