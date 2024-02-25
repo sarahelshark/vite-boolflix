@@ -10,30 +10,7 @@ export default {
     };
   },
   methods: {
-    filterResults(showDiv) {
-      this.showDiv = false;
-      //resetto il messaggio in pagina se si effettua un'altra ricerca dopo il messaggio informativo 
-      
-      /*costruisco qui dentro una chiamata ajax dove costruisco il nuovo url> quella dentro fetchdata  */
-      const url = `${state.api_url}&query=${state.searchText}`;
-      
-      axios
-        .get(url)
-        .then((response) => {
-          state.movieCards = response.data.results;
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-
-      this.searchText = ""; // Clear the input
-
-      //faccio apparire messaggio in pagina> lo trasformo in una funzione migliore dopo...
-      if (state.movieCards.length === 0) {
-        console.log("titolo non disponibile");
-        state.showDiv = true;
-      }
-    },
+    
   },
   mounted() {
     /*RENDER MOVIES HOME PAGE- 1^ chiamata ajax*/
@@ -45,15 +22,7 @@ export default {
 };
 </script>
 <template>
-  <div class="filters">
-    <input
-      type="text"
-      placeholder="Inserisci film o serie TV"
-      v-model="state.searchText"
-      @keyup.enter="filterResults"
-    />
-    <button @click="filterResults">cerca</button>
-  </div>
+  
   <div class="container">
     <div class="row">
       <div class="notAvailable" v-show="state.showDiv">
@@ -96,11 +65,7 @@ export default {
   width: 80%;
 }
 
-.notAvailable {
-  color: var(--bool-light);
-  padding: 1rem;
-  margin: auto;
-}
+
 
 /*#region of cards rotating */
 

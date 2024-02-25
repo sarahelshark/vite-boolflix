@@ -2,9 +2,12 @@
 import AppLogo from "./AppLogo.vue";
 import AppSearchBox from "./AppSearchBox.vue";
 
+import { state } from "../state.js";
+
 export default {
   data() {
     return {
+      state,
       searchText: "",
 
       menu: [
@@ -36,6 +39,7 @@ export default {
       this.menu.forEach((item) => (item.active = false));
       this.menu[index].active = true;
     },
+    
 
   },
  

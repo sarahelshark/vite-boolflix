@@ -1,16 +1,17 @@
 <script>
-
+import { state } from "../state.js";
 export default {
 
   emits: ["filtered"],
   data() {
     return {
-      searchText: "",
-      searchList: [],
+      state,
     };
   },
   methods: {
-   
+    stateTest(){
+      console.log('it works', state.searchText)
+    }
   },
 };
 </script>
@@ -19,10 +20,10 @@ export default {
     <input
       type="text"
       placeholder="Inserisci film o serie TV"
-      v-model="searchText"
-      @keyup.enter="filterResults"
+      v-model="state.searchText"
+      @keyup.enter="state.filterResults"
     />
-    <button @click="filterResults">cerca</button>
+    <button @click="state.filterResults">cerca</button>
   </div>
 </template>
 
