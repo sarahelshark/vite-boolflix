@@ -5,15 +5,16 @@ export const state = reactive ({
 
 /**reactive object- global state  */
 
-searchList: [],
 showDiv: false,
 searchText: "",
-      showDiv: false,
-searchText: '',
     api_url:"https://api.themoviedb.org/3/search/movie?language=it-IT&api_key=b8a3cc58e76a00cf47574cfa4f055fb3",
     img_prefix: `https://image.tmdb.org/t/p/w200/`,
     movieCards:[],
+    
+    filteredMovieCards: [],
+
     filterResults(showDiv) {
+
       this.showDiv = false;
       //resetto il messaggio in pagina se si effettua un'altra ricerca dopo il messaggio informativo 
       
@@ -32,10 +33,7 @@ searchText: '',
       this.searchText = ""; // Clear the input
 
       //faccio apparire messaggio in pagina> lo trasformo in una funzione migliore dopo...
-      if (state.movieCards.length === 0) {
-        console.log("titolo non disponibile");
-        state.showDiv = true;
-      }
+      
     },
 
     fetchMovieData(url) {
@@ -57,6 +55,10 @@ searchText: '',
           .catch((error) => {
             console.error(error);
           });
+      },
+
+      starsRate(vote) {
+        return Math.round(vote / 2);
       },
 
     fetchTVSeriesData(){} //abbino SECONDA CHIAMATA

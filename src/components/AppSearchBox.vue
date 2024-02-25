@@ -9,8 +9,8 @@ export default {
     };
   },
   methods: {
-    stateTest(){
-      console.log('it works', state.searchText)
+    showDivTest(){
+      console.log('it works', state.searchText);
     }
   },
 };
