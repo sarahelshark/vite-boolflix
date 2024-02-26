@@ -1,8 +1,7 @@
 <script>
 import { state } from "../state.js";
 import FilteredMoviesRender from "./FilteredMoviesRender.vue";
-
-import axios from "axios";
+import FilteredTVSeriesRender from "./FilteredTVSeriesRender.vue";
 
 export default {
   data() {
@@ -15,7 +14,8 @@ export default {
   },
   components:{
     FilteredMoviesRender,
-  },
+    FilteredTVSeriesRender
+},
 };
 </script>
 <template>
@@ -28,10 +28,7 @@ export default {
       </div>  <!--no results-->
 
       <FilteredMoviesRender></FilteredMoviesRender> <!--movies component-->
-
-      <div class="testTV"v-for="serieTv in state.tvCards">
-        {{ serieTv.name  }}
-      </div>
+      <FilteredTVSeriesRender></FilteredTVSeriesRender><!--tv series component--> 
 
     </div>
   </div>
