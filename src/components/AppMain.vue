@@ -11,20 +11,7 @@ export default {
     };
   },
   mounted(){
-    const urlTV=`${state.api_url_tv}&query=${state.searchText}`;
-    const urlTV_unfiltered=`${state.api_url_tv}&query=a`
-      axios
-      .get(urlTV_unfiltered)
-      .then((response) => {
-         
-          state.tvCards = response.data.results;
-           console.log(response.data.results)      
-        
-      })
-      .catch((error) => {
-          console.error(error);
-        });
-
+    
   },
   components:{
     FilteredMoviesRender,

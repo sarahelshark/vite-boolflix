@@ -32,6 +32,21 @@ api_url_tv:"https://api.themoviedb.org/3/search/tv?api_key=b8a3cc58e76a00cf47574
           console.error(error);
         });
 
+        const urlTV=`${state.api_url_tv}&query=${state.searchText}`;
+    const urlTV_unfiltered=`${state.api_url_tv}&query=a`
+      axios
+      .get(urlTV)
+      .then((response) => {
+         
+          state.tvCards = response.data.results;
+           console.log(response.data.results)      
+        
+      })
+      .catch((error) => {
+          console.error(error);
+        });
+
+
       this.searchText = ""; // Clear the input
 
       //faccio apparire messaggio in pagina> lo trasformo in una funzione migliore dopo...
@@ -63,6 +78,19 @@ api_url_tv:"https://api.themoviedb.org/3/search/tv?api_key=b8a3cc58e76a00cf47574
         return Math.round(vote / 2);
       },
 
-    fetchTVSeriesData(){} //abbino SECONDA CHIAMATA
+    fetchTVSeriesData(urlTV){
+      axios
+      .get(urlTV)
+      .then((response) => {
+         
+          state.tvCards = response.data.results;
+           console.log(response.data.results)      
+        
+      })
+      .catch((error) => {
+          console.error(error);
+        });
+
+    } //abbino SECONDA CHIAMATA
 },
 )

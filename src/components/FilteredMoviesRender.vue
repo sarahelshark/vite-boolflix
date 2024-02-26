@@ -9,6 +9,7 @@ export default {
   mounted() {
     /*RENDER MOVIES HOME PAGE- 1^ chiamata ajax*/
     state.fetchMovieData(state.api_url);
+    state.fetchTVSeriesData(state.api_url_tv)
   },
 };
 </script>
