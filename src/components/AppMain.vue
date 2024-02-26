@@ -2,11 +2,29 @@
 import { state } from "../state.js";
 import FilteredMoviesRender from "./FilteredMoviesRender.vue";
 
+import axios from "axios";
+
 export default {
   data() {
     return {
       state,
     };
+  },
+  mounted(){
+    const urlTV=`${state.api_url_tv}&query=${state.searchText}`;
+    const urlTV_unfiltered=`${state.api_url_tv}&query=a`
+      axios
+      .get(urlTV_unfiltered)
+      .then((response) => {
+         
+          state.tvCards = response.data.results;
+           console.log(response.data.results)      
+        
+      })
+      .catch((error) => {
+          console.error(error);
+        });
+
   },
   components:{
     FilteredMoviesRender,
@@ -23,6 +41,10 @@ export default {
       </div>  <!--no results-->
 
       <FilteredMoviesRender></FilteredMoviesRender> <!--movies component-->
+
+      <div class="testTV"v-for="serieTv in state.tvCards">
+        {{ serieTv.name  }}
+      </div>
 
     </div>
   </div>
