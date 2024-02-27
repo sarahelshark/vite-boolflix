@@ -19,7 +19,7 @@ export default {
 </script>
 
 <template>
-  <div class="card col-4" v-for="card in state.movieCards">
+  <div class="card col-4 col-lg col-md col-sm" v-for="card in state.movieCards">
     <div class="frontofcard">
       <img :src="state.img_prefix + card.poster_path" alt="" />
     </div>
@@ -60,18 +60,18 @@ export default {
   transition: all 0.8s ease-in;
 }
 .frontofcard,
-.backofcard {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  color: var(--bool-light);
-  padding: auto;
+.backofcard  {
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    color: var(--bool-light);
+    padding: 0.5rem 0.5rem;
 }
 .card:hover {
   transform: rotateY(180deg);
@@ -87,8 +87,27 @@ export default {
 [class^="col-"] {
   padding: 1rem;
 }
-
 .col-4 {
   width: calc(100% / 4);
+}
+
+
+@media screen and (max-width: 1024px){
+  .col-lg {
+  width: calc(100% / 3);
+}
+}
+
+@media screen and (max-width: 868px){
+  .col-md {
+  width: calc(100% / 2);
+}
+}
+@media screen and (max-width: 679px){
+  .col-sm {
+  width: 70%;
+  margin: auto;
+  margin-bottom: 1rem;
+}
 }
 </style>
