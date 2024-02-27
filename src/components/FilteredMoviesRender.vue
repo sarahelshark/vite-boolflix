@@ -21,7 +21,6 @@ export default {
 <template>
   <div class="card col-4" v-for="card in state.movieCards">
     <div class="frontofcard">
-      <h3>{{ card.title }}</h3>
       <img :src="state.img_prefix + card.poster_path" alt="" />
     </div>
     <div class="backofcard">

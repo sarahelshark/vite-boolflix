@@ -24,7 +24,6 @@ export default {
 <div class="card col-4" v-for="serieTv in state.tvCards">
     
     <div class="frontofcard">
-      <h3>{{ serieTv.name }}</h3>
       <img :src="state.img_prefix + serieTv.poster_path" alt="" />
     </div>
     <div class="backofcard">
@@ -33,7 +32,7 @@ export default {
         <li>{{ serieTv.original_name }}</li>
         
         <lang-flag
-      :iso="card.original_language === 'cn' ? 'zh' : card.original_language"
+      :iso="serieTv.original_language === 'cn' ? 'zh' : serieTv.original_language"
     />
         <li>Voto: {{ state.starsRate(serieTv.vote_average) }}</li>
         <i

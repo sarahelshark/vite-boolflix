@@ -52,7 +52,6 @@ export default {
 .row {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
   margin: 0 2rem;
   flex-grow: 1;
   width: 80%;
