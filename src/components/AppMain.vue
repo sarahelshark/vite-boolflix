@@ -29,7 +29,8 @@ export default {
       <div class="notAvailable" v-show="state.showDiv">
         Spiacenti! Nessun film disponibile al momento, prova a cercare un altro
         titolo.
-      </div>  <!--no results-->
+      </div> 
+      <!--no results-->
 
       <FilteredMoviesRender></FilteredMoviesRender> <!--movies component-->
       <FilteredTVSeriesRender></FilteredTVSeriesRender><!--tv series component--> 

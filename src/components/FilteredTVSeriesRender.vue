@@ -31,8 +31,7 @@ export default {
       <h3>{{ serieTv.name }}</h3>
       <ul>
         <li>{{ serieTv.original_name }}</li>
-        <li >{{ serieTv.original_language }}
-        </li>
+        
         <lang-flag
       :iso="card.original_language === 'cn' ? 'zh' : card.original_language"
     />

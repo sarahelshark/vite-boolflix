@@ -27,3 +27,18 @@ body{
   padding: 1rem;
   margin: auto;
 }
+
+
+::-webkit-scrollbar {
+  width: 3px;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+  background: none; 
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+  background: var(--bool-accent); 
+  }
+  
+  /*end of custom scrollbar*/

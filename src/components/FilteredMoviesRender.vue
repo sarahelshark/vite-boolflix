@@ -28,7 +28,6 @@ export default {
       <h3>{{ card.title }}</h3>
       <ul>
         <li>{{ card.original_title }}</li>
-        <li >{{ card.original_language }}</li>
         <lang-flag
       :iso="card.original_language === 'cn' ? 'zh' : card.original_language"
     />

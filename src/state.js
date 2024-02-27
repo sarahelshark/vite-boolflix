@@ -27,7 +27,7 @@ export const state = reactive({
   //#endregion URLs 
 
   //#region methods
-  
+
   filterResults(showDiv) {
     this.showDiv = false;
     //resetto il messaggio in pagina se si effettua un'altra ricerca dopo il messaggio informativo
