@@ -1,7 +1,9 @@
 <script>
+
 import { state } from "../state.js";
 import FilteredMoviesRender from "./FilteredMoviesRender.vue";
 import FilteredTVSeriesRender from "./FilteredTVSeriesRender.vue";
+import LangFlag from "vue-lang-code-flags";
 
 export default {
   data() {
@@ -9,12 +11,14 @@ export default {
       state,
     };
   },
+ 
   mounted(){
     
   },
   components:{
     FilteredMoviesRender,
-    FilteredTVSeriesRender
+    FilteredTVSeriesRender,
+    LangFlag,
 },
 };
 </script>
@@ -34,6 +38,7 @@ export default {
   </div>
 </template>
 <style scoped>
+
 .container {
   display: flex;
   width: 80%;

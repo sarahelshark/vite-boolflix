@@ -1,11 +1,16 @@
 
 <script>
+import LangFlag from "vue-lang-code-flags";
 import { state } from "../state.js";
 export default {
   data() {
     return {
       state,
+     
     };
+  },
+  components: {
+    LangFlag,
   },
   mounted() {
     state.fetchTVSeriesData(state.api_url_tv)
@@ -26,7 +31,11 @@ export default {
       <h3>{{ serieTv.name }}</h3>
       <ul>
         <li>{{ serieTv.original_name }}</li>
-        <li>{{ serieTv.original_language }}</li>
+        <li >{{ serieTv.original_language }}
+        </li>
+        <lang-flag
+      :iso="card.original_language === 'cn' ? 'zh' : card.original_language"
+    />
         <li>Voto: {{ state.starsRate(serieTv.vote_average) }}</li>
         <i
           v-for="i in state.starsRate(serieTv.vote_average)"

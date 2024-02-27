@@ -1,10 +1,14 @@
 <script>
 import { state } from "../state.js";
+import LangFlag from "vue-lang-code-flags";
 export default {
   data() {
     return {
       state,
     };
+  },
+  components: {
+    LangFlag,
   },
   mounted() {
     /*RENDER MOVIES HOME PAGE- 1^ chiamata ajax*/
@@ -24,7 +28,11 @@ export default {
       <h3>{{ card.title }}</h3>
       <ul>
         <li>{{ card.original_title }}</li>
-        <li>{{ card.original_language }}</li>
+        <li >{{ card.original_language }}</li>
+        <lang-flag
+      :iso="card.original_language === 'cn' ? 'zh' : card.original_language"
+    />
+          
         <li>Voto: {{ state.starsRate(card.vote_average) }}</li>
         <i
           v-for="i in state.starsRate(card.vote_average)"
