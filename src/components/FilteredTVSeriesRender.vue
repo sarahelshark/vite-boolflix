@@ -24,16 +24,13 @@ export default {
 <div class="card col-4" v-for="serieTv in state.tvCards">
     
     <div class="frontofcard">
-      <img :src="state.img_prefix + serieTv.poster_path" alt="" />
+      <img :src="state.img_prefix + serieTv.poster_path" :alt="serieTv.name" />
     </div>
     <div class="backofcard">
       <h3>{{ serieTv.name }}</h3>
       <ul>
         <li>{{ serieTv.original_name }}</li>
-        
-        <lang-flag
-      :iso="serieTv.original_language === 'cn' ? 'zh' : serieTv.original_language"
-    />
+         <li><lang-flag :iso="serieTv.original_language === 'cn' ? 'zh' : serieTv.original_language " /></li>
         <li>Voto: {{ state.starsRate(serieTv.vote_average) }}</li>
         <i
           v-for="i in state.starsRate(serieTv.vote_average)"
@@ -43,19 +40,21 @@ export default {
           v-for="i in 5 - state.starsRate(serieTv.vote_average)"
           class="fa-regular fa-star"
         ></i>
+        <li v-if="serieTv.overview.length < 200">{{ serieTv.overview }}</li>
+        <li v-else="serieTv.overview.length > 200">
+          <a
+            >Per vedere la descrizione completa di
+            "{{ serieTv.name }}" <strong>click me!</strong> </a
+          >
+        </li>
       </ul>
     </div>
   </div>
 
 </template>
-
 <style scoped>
-
 /*#region of cards rotating */
 
-.frontofcard {
-  font-size: 14px;
-}
 .card {
   height: 400px;
   width: 300px;
@@ -64,18 +63,18 @@ export default {
   transition: all 0.8s ease-in;
 }
 .frontofcard,
-.backofcard  {
-    height: 90%;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    color: var(--bool-light);
-    padding: 0.5rem 0.5rem;
+.backofcard {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  position: absolute;
+  color: var(--bool-light);
+  padding: 0.5rem 0.5rem;
 }
 .card:hover {
   transform: rotateY(180deg);
@@ -95,23 +94,22 @@ export default {
   width: calc(100% / 4);
 }
 
-
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 1024px) {
   .col-lg {
-  width: calc(100% / 3);
-}
+    width: calc(100% / 3);
+  }
 }
 
-@media screen and (max-width: 868px){
+@media screen and (max-width: 868px) {
   .col-md {
-  width: calc(100% / 2);
+    width: calc(100% / 2);
+  }
 }
-}
-@media screen and (max-width: 679px){
+@media screen and (max-width: 679px) {
   .col-sm {
-  width: 70%;
-  margin: auto;
-  margin-bottom: 1rem;
-}
+    width: 70%;
+    margin: auto;
+    margin-bottom: 1rem;
+  }
 }
 </style>
