@@ -26,10 +26,12 @@ export default {
   <div class="container">
     <div class="row">
 
-      <div class="notAvailable" v-show="state.showDiv">
+      <div class="notAvailable" v-if="state.movieCards.length === 0">
         Spiacenti! Nessun film disponibile al momento, prova a cercare un altro
         titolo.
       </div> 
+      
+      
       <!--no results-->
 
       <FilteredMoviesRender></FilteredMoviesRender> <!--movies component-->

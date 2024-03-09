@@ -5,7 +5,7 @@ export const state = reactive({
   /**reactive object- global state  */
 
   //#region reactive datas
-  showDiv: false,
+  
   searchText: "",
   //#endregion reactive datas
 
@@ -39,6 +39,7 @@ export const state = reactive({
       .get(url)
       .then((response) => {
         state.movieCards = response.data.results;
+        
       })
       .catch((error) => {
         console.error(error);
@@ -53,6 +54,7 @@ export const state = reactive({
       .then((response) => {
         state.tvCards = response.data.results;
         console.log(response.data.results);
+        
       })
       .catch((error) => {
         console.error(error);
