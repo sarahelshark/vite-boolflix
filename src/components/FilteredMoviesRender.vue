@@ -19,9 +19,9 @@ export default {
 </script>
 
 <template>
-  <div class="card col-4 col-lg col-md col-sm" v-for="card in state.movieCards">
+  <div class="card col-4 col-lg col-md col-sm" v-for="card in state.movieCards"  >
     <div class="frontofcard">
-      <img :src="state.img_prefix + card.poster_path" :alt="card.title" />
+      <img :src="state.img_prefix + card.poster_path "   :alt="card.title"  />
     </div>
     <div class="backofcard">
       <h3>{{ card.title }}</h3>
