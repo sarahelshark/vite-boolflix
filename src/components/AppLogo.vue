@@ -12,8 +12,8 @@
 </template>
 <style scoped>
 img {
-    margin-left: 0.5rem;
-    margin-top: 0.5rem;
+    margin-left: 0.3rem;
+    margin-top: 0.3rem;
     width: 190px;
     filter: drop-shadow(0 0 4px var(--bool-accent));
 }

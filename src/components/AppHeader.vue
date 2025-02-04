@@ -15,7 +15,7 @@ export default {
           active: true,
         },
         {
-          text: "Serie TV",
+          text: "Series",
           active: false,
         },
         {
@@ -23,7 +23,7 @@ export default {
           active: false,
         },
         {
-          text: "Nuovi e popolari",
+          text: "New",
           active: false,
         },
       ],
