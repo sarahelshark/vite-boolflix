@@ -18,8 +18,13 @@ img {
     filter: drop-shadow(0 0 4px var(--bool-accent));
 }
 @media (max-width: 768px) {
+.img_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 img {
-    margin: 0 28%;
+    margin: 1rem auto;
 }
 }
 
