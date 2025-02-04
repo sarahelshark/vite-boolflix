@@ -24,7 +24,7 @@ li{
 }
 :root{
   
-    --bool-dark: #1a1a1aff;
+    --bool-dark: rgb(39, 36, 36);
     --bool-light:#ffffffff;
     --bool-accent: #db1a27ff;
 }
