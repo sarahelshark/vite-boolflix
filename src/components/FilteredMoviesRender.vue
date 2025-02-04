@@ -64,7 +64,7 @@ export default {
   height: 90%;
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  /*flex-wrap: wrap;*/
   gap: 0.5rem;
   flex-direction: column;
   align-content: center;
