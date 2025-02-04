@@ -38,7 +38,14 @@ export const state = reactive({
     axios
       .get(url)
       .then((response) => {
-        state.movieCards = response.data.results;
+        // Filter movies with rating > 0 and valid poster_path
+        state.movieCards = response.data.results.filter(movie => 
+          movie.vote_average > 0 && 
+          movie.poster_path && 
+          movie.poster_path !== null && 
+          movie.poster_path !== ''
+        );
+        console.log('Filtered movies:', state.movieCards);
         
       })
       .catch((error) => {
@@ -52,9 +59,14 @@ export const state = reactive({
     axios
       .get(urlTV)
       .then((response) => {
-        state.tvCards = response.data.results;
-        console.log(response.data.results);
-        
+         // Filter TV shows with rating > 0 and valid poster_path
+         state.tvCards = response.data.results.filter(show => 
+          show.vote_average > 0 && 
+          show.poster_path && 
+          show.poster_path !== null && 
+          show.poster_path !== ''
+        );
+        console.log('Filtered TV shows:', state.tvCards);        
       })
       .catch((error) => {
         console.error(error);
