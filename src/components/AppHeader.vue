@@ -77,6 +77,7 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin: 0 10%;
 }
 .center {
   & ul{
@@ -95,5 +96,33 @@ a {
 .active {
   color: var(--bool-accent);
   filter: drop-shadow(0 0 5px var(--bool-accent));
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0 20%;
+  }
+
+  .left-side, .right-side {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .center ul {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  a {
+    font-size: 0.9rem;
+  }
+
+  .center {
+  & li {
+    margin: 0 20%;
+  }
+}
 }
 </style>

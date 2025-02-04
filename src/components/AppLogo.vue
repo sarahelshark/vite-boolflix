@@ -17,6 +17,11 @@ img {
     width: 190px;
     filter: drop-shadow(0 0 4px var(--bool-accent));
 }
+@media (max-width: 768px) {
+img {
+    margin: 0 28%;
+}
+}
 
 
 </style>
